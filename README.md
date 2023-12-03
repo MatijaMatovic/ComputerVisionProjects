@@ -1,4 +1,4 @@
-# ComputerVisionProjects
+# Computer Vision Projects
 My computer vision projects.
 Currently include:
 
