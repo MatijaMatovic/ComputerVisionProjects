@@ -11,9 +11,10 @@ This is better than calculating MSE on the picture itself,
 because this doesn't account for the properties/features of the image, as using layers does
 '''
 class VGGLoss(nn.Module):
-    def __init__(self) -> None:
+    def __init__(self, model='srgan') -> None:
         super().__init__()
-        self.vgg = vgg19(pretrained=True).features[:36].eval()  # to(device)
+        extraction_point = 35 if model == 'esrgan' else 36
+        self.vgg = vgg19(pretrained=True).features[:extraction_point].eval()  # to(device)
         self.loss = nn.MSELoss()
 
         for param in self.vgg.parameters():
